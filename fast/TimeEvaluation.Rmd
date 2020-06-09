@@ -24,11 +24,11 @@ oj2 <- spam %>% mutate(type = if_else(spam$type == "Spam",1,0))
 ```
 
 ```{r}
-library(rbenchmark)
-benchmark(
+bench::mark(
   fast::blblm(type~., data=oj2, m=5, B=100, parallel = TRUE),
   fast::blblm(type~., data=oj2, m=5, B=100, parallel = FALSE),
-  blblm::blblm(type~., data=oj2, m=5, B=100)
+  blblm::blblm(type~., data=oj2, m=5, B=100),
+  check = FALSE
 )
 ```
 ```{r}
@@ -54,29 +54,24 @@ X <- cbind(1, log(trees$Girth))
 weight <- replicate(length(y), 1)
 frm <- formula(log(Volume) ~ log(Girth))
 
-res <- benchmark(
-  fastLmXPure(log(trees$Girth), log(trees$Volume), weight),
-  fastLmX(frm, data=trees, weight),
+bench::mark(
+  fast::fastLmXPure(as.matrix(log(trees$Girth)), log(trees$Volume), weight),
+  fast::fastLmX(frm, data=trees, weight),
+  RcppArmadillo::fastLm(frm, data=trees),
+  RcppArmadillo::fastLmPure(as.matrix(log(trees$Girth)), log(trees$Volume)),
   lm(frm, data=trees, weights = weight),
-  replications=5000
+  check = FALSE
 )
-
-print(res[,1:4])
 ```
 
 
 ```{r}
 frm <- formula(log(Volume) ~ log(Girth))
-system.time({
-  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = TRUE)
-})
-
-system.time({
-  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = FALSE)
-})
-
-system.time({
-  blblm::blblm(frm, data=trees, m = 10, B = 5000)
-})
+bench::mark(
+  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = TRUE),
+  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = FALSE),
+  blblm::blblm(frm, data=trees, m = 10, B = 5000),
+  check = FALSE
+)
 ```
 

@@ -7,7 +7,7 @@
 using namespace Rcpp;
 
 // fastLmX_impl
-List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec& Z);
+Rcpp::List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec& Z);
 RcppExport SEXP _fast_fastLmX_impl(SEXP XSEXP, SEXP YSEXP, SEXP ZSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

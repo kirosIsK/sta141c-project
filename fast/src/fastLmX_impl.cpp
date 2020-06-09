@@ -1,6 +1,5 @@
 #include <RcppArmadillo.h>
-
-using namespace Rcpp;
+// [[Rcpp::depends(RcppArmadillo)]]
 
 //' estimate the regression estimates based on given the number of repetitions
 //'
@@ -9,14 +8,14 @@ using namespace Rcpp;
 //' @param Z a Numeric Vector for weight
 //' @export
 // [[Rcpp::export]]
-List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec& Z) {
+Rcpp::List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec& Z) {
   int n = X.n_rows, k = X.n_cols;
 
   // slope coefficients
   // X^T * (W)^1/2 * (W)^1/2 * X = X^T * (W)^1/2 * (W)^1/2 * Y
   arma::mat diag_Z    = diagmat(sqrt(Z));
   arma::mat Xasterisk = diag_Z * X;
-  arma::mat Yasterisk     = diag_Z * Y;
+  arma::mat Yasterisk = diag_Z * Y;
   arma::colvec coef   = arma::solve(Xasterisk,Yasterisk);
 
   // residuals
@@ -27,9 +26,9 @@ List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec&
   arma::colvec std_err = arma::sqrt(s2 * arma::diagvec(arma::pinv(arma::trans(X)*X)));
 
 
-  return List::create(Named("coefficients") = coef,
-                      Named("stderr")       = std_err,
-                      Named("df.residual")  = n - k);
+  return Rcpp::List::create(Rcpp::Named("coefficients") = coef,
+                            Rcpp::Named("stderr")       = std_err,
+                            Rcpp::Named("df.residual")  = n - k);
 }
 
 

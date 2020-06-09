@@ -15,12 +15,11 @@ LinkingTo:
     Rcpp,
     RcppArmadillo
 Imports: 
-    Rcpp,
+    Rcpp (>= 0.11.0),
     RcppArmadillo,
     purrr,
-    furrr,
     stats,
-    future,
+    parallel,
     magrittr
 Suggests: 
     testthat
