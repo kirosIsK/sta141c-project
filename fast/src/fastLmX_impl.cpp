@@ -15,9 +15,9 @@ List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::colvec&
   // slope coefficients
   // X^T * (W)^1/2 * (W)^1/2 * X = X^T * (W)^1/2 * (W)^1/2 * Y
   arma::mat diag_Z    = diagmat(sqrt(Z));
-  arma::mat XStar     = diag_Z * X;
-  arma::mat YStar     = diag_Z * Y;
-  arma::colvec coef   = arma::solve(XStar,YStar);
+  arma::mat Xasterisk = diag_Z * X;
+  arma::mat Yasterisk     = diag_Z * Y;
+  arma::colvec coef   = arma::solve(Xasterisk,Yasterisk);
 
   // residuals
   arma::colvec res    = Y - X*coef;

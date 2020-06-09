@@ -1,4 +1,5 @@
 #' @import furrr
+#' @import parallel
 #' @import purrr
 #' @import stats
 #' @import future
@@ -20,19 +21,26 @@ blblm <- function(formula, data, m = 10, B = 5000, parallel = TRUE) {
 
   # Parallel Method used, detect num of cores and assign
   if (para == TRUE) {
-    num_of_cores_to_use <- as.integer(future::availableCores()/2)
-    suppressWarnings(future::plan(future::multiprocess, workers = num_of_cores_to_use))
+    num_of_cores_to_use <- as.integer(detectCores()/2)
+    cl <- makeCluster(num_of_cores_to_use)
   }
 
-
+  # Split Data
   data_list <- split_data(data, m)
 
-  ## There is a bug preventing me from using future map over here,
-  #   therefore I will only use map
+  # Estimate
+  #  A reason I don't use smart_map over here is because
+  #   It seems that there may be problem with lazy evaluation when
+  #   I try to parLapply over here
   estimates <- map(
     data_list,
     ~ lm_each_subsample(formula = formula, data = ., n = nrow(data), B = B))
   res <- list(estimates = estimates, formula = formula)
+
+  # Stop Cluster if parallel
+  if (para == TRUE) stopCluster(cl)
+
+  # Class blblm
   class(res) <- "blblm"
   invisible(res)
 }
@@ -54,12 +62,12 @@ lm_each_subsample <- function(formula, data, n, B) {
 #' compute the regression estimates for a blb dataset
 lm_each_boot <- function(formula, data, n) {
   freqs <- rmultinom(1, n, rep(1, nrow(data)))
-  lm1(formula, data, freqs)
+  lm1_X(formula, data, freqs)
 }
 
 
 #' estimate the regression estimates based on given the number of repetitions
-lm1 <- function(formula, data, freqs) {
+lm1_X <- function(formula, data, freqs) {
   # drop the original closure of formula,
   # otherwise the formula will pick a wront variable from the global scope.
   environment(formula) <- environment()
@@ -175,12 +183,12 @@ mean_lwr_upr <- function(x, level = 0.95) {
 
 
 smart_map      <- function(.x, .f, ...) {
-  ifelse(para==TRUE, furrr::future_map(.x, .f, ...), purrr::map(.x, .f, ...))
+  ifelse(para==TRUE, parLapply(cl, .x, .f, ...), purrr::map(.x, .f, ...))
 }
 
 
 smart_map_dbl  <- function(.x, .f, ...) {
-  ifelse(para==TRUE, furrr::future_map_dbl(.x, .f, ...), purrr::map_dbl(.x, .f, ...))
+  ifelse(para==TRUE, parLapply(cl, .x, .f, ...) %>% as.double(), purrr::map_dbl(.x, .f, ...))
 }
 
 
