@@ -1,0 +1,27 @@
+Package: fast
+Type: Package
+Title: fast computational weighted linear Regression
+Version: 0.1.0
+Author: Wing Lo
+Maintainer: Wing Lo <wclo@ucdavis.edu>
+Description: Fast Computational weighted linear Regression
+    Using Linear Algebra
+SystemRequirements: GNU make
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+Imports: 
+    Rcpp,
+    RcppArmadillo,
+    purrr,
+    furrr,
+    stats,
+    future,
+    magrittr
+Suggests: 
+    testthat
+

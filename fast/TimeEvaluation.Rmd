@@ -1,0 +1,86 @@
+---
+title: "Untitled"
+author: "Wing Lo"
+date: "6/8/2020"
+output: html_document
+---
+
+```{r}
+library(rsample)
+library(kernlab)
+library(tidyverse)
+data(spam)
+set.seed(141)
+nspam <- 1813
+nham <- 2788
+test <- c(sample(1:nspam, floor(nspam * 0.1)), sample(nspam + 1:nham, floor(nham * 0.1)))
+spam_train <- spam[-test, ]
+spam_test <- spam[test, ]
+y=ifelse(spam_train$type == "spam", 1, 0)
+x_data <- spam_train %>% select(-type) %>% as.matrix()
+
+oj <- spam %>% select(-type) %>% as.matrix()
+oj2 <- spam %>% mutate(type = if_else(spam$type == "Spam",1,0)) %>% as.matrix()
+```
+
+```{r}
+benchmark(
+  fast::blblm(type~., data=oj2, m=5, B=100, parallel = TRUE),
+  fast::blblm(type~., data=oj2, m=5, B=100, parallel = FALSE),
+  blblm::blblm(type~., data=oj2, m=5, B=100)
+)
+```
+```{r}
+system.time({
+  fast::blblm(type~., data=oj2, m=5, B=100, parallel = TRUE)
+})
+
+system.time({
+  fast::blblm(type~., data=oj2, m=5, B=100, parallel = FALSE)
+})
+
+system.time({
+  blblm::blblm(type~., data=oj2, m=5, B=100)
+})
+```
+
+```{r}
+system.time({
+  fast::blblm(type~., data=oj2, parallel = TRUE),
+  lm(frm, data=trees, weights = weight)           # R's standard function
+})
+```
+
+
+```{r}
+y <- log(trees$Volume)
+X <- cbind(1, log(trees$Girth))
+weight <- replicate(length(y), 1)
+frm <- formula(log(Volume) ~ log(Girth))
+
+res <- benchmark(
+  fastLmXPure(log(trees$Girth), log(trees$Volume), weight),
+  fastLmX(frm, data=trees, weight),
+  lm(frm, data=trees, weights = weight),
+  replications=5000
+)
+
+print(res[,1:4])
+```
+
+
+```{r}
+frm <- formula(log(Volume) ~ log(Girth))
+system.time({
+  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = TRUE)
+})
+
+system.time({
+  fast::blblm(frm, data=trees, m = 10, B = 5000,parallel = FALSE)
+})
+
+system.time({
+  blblm::blblm(frm, data=trees, m = 10, B = 5000)
+})
+```
+
