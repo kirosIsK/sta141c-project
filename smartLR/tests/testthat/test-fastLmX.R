@@ -1,11 +1,11 @@
-install.packages("kernlab",repos = "http://cran.us.r-project.org")
-install.packages("tidyverse",repos = "http://cran.us.r-project.org")
-install.packages("parallel",repos = "http://cran.us.r-project.org")
-install.packages("smartLR",repos = "http://cran.us.r-project.org")
-install.packages("rbenchmark",repos = "http://cran.us.r-project.org")
-install.packages("devtools",repos = "http://cran.us.r-project.org")
-devtools::install_github("ucdavis-sta141c-sq-2020/blblm")
-
+if(!require(kernlab)) install.packages("kernlab",repos = "http://cran.us.r-project.org")
+if(!require(tidyverse)) install.packages("tidyverse",repos = "http://cran.us.r-project.org")
+if(!require(parallel)) install.packages("parallel",repos = "http://cran.us.r-project.org")
+if(!require(smartLR)) install.packages("smartLR",repos = "http://cran.us.r-project.org")
+if(!require(rbenchmark)) install.packages("rbenchmark",repos = "http://cran.us.r-project.org")
+if(!require(devtools)) install.packages("devtools",repos = "http://cran.us.r-project.org")
+if(!require(blblm)) devtools::install_github("ucdavis-sta141c-sq-2020/blblm")
+if(!require(rsample)) install.packages("rsample",repos = "http://cran.us.r-project.org")
 
 test_that("Test Case #1", {
   library(RcppArmadillo)

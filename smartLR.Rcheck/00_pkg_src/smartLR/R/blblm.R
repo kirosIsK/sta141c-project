@@ -25,8 +25,18 @@ blblm <- function(formula, data, m = 10, B = 5000, parallel = TRUE) {
   # Parallel Method used, detect num of cores and assign
   if (para == TRUE) {
 
-    ## Generate Cluster
-    num_of_cores_to_use <- as.integer(detectCores()/2)
+    ## CRAN limits the number of cores available to packages to 2
+    ##  This case is added completetly for CRAN test
+    chk <- Sys.getenv("_R_CHECK_LIMIT_CORES_", "")
+
+    if (nzchar(chk) && chk == "TRUE") {
+      # use 2 cores in CRAN
+      num_of_cores_to_use <- 2L
+    }
+    else {
+      ## Generate Cluster
+      num_of_cores_to_use <- as.integer(detectCores()/2)
+    }
     CL <- makeCluster(num_of_cores_to_use)
     clusterExport(cl=CL, varlist= all_inf, envir=environment())
   }
@@ -43,7 +53,7 @@ blblm <- function(formula, data, m = 10, B = 5000, parallel = TRUE) {
   ## But the effect of such code and well mainstance of R has pursuaded me, R makes many things so easy
 
   ## Another reason I make such codes is because they look less clumsy....
-  assign("CL", CL, envir = .GlobalEnv)
+  if (para == TRUE) assign("CL", CL, envir = .GlobalEnv)
 
 
   # Get BootStraps Estimate

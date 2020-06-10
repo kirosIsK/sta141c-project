@@ -14,12 +14,10 @@ C:/Rtools/mingw_64/bin/g++ -std=gnu++11  -I"C:/PROGRA~1/R/R-36~1.3/include" -DND
 C:/Rtools/mingw_64/bin/g++ -std=gnu++11 -shared -s -static-libgcc -o smartLR.dll tmp.def RcppExports.o fastLmX_impl.o -fopenmp -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lRlapack -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lRblas -lgfortran -lm -lquadmath -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lR
 installing to C:/Users/darkj/Music/sta141c-project/smartLR.Rcheck/00LOCK-smartLR/00new/smartLR/libs/x64
 ** R
-** inst
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
 ** building package indices
-** installing vignettes
 ** testing if installed package can be loaded from temporary location
 *** arch - i386
 *** arch - x64

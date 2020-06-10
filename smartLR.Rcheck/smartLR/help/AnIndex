@@ -2,6 +2,7 @@ smartLR-package	smartLR
 blbcoef	blbcoef
 blblm	blblm
 blbsigma	blbsigma
+fastLmX	fastLmX
 fastLmXPure	fastLmXPure
 fastLmX_impl	fastLmX_impl
 lm_each_boot	lm_each_boot

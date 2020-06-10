@@ -3,6 +3,8 @@ blblm                   estimate the regression with Little Bag of
                         Bootstraps It is strongly encouraged to use
                         parallel when m and B is large
 blbsigma                compute sigma from fit
+fastLmX                 Rewritten weighted Linear regression using
+                        RcppArmadillo
 fastLmXPure             Directly call fastLmX without doing Data
                         Maniplication
 fastLmX_impl            estimate the regression estimates based on

@@ -1,6 +1,8 @@
 library(testthat)
 library(smartLR)
 
-test_dir("tests/testthat")
+test_check("smartLR")
+
+
 
 

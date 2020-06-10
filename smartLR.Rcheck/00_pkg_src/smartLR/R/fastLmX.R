@@ -1,3 +1,9 @@
+#' Rewritten weighted Linear regression using
+#' RcppArmadillo
+#'
+#' @param X a matrix for all explantory variables
+#' @param ... other argument such as a colVector for output variable and a colvector for weights
+#' @return fastLmX object that includes coef of the reggression results
 #' @export
 fastLmX <- function(X, ...) UseMethod("fastLmX")
 

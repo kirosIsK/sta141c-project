@@ -19,4 +19,4 @@ Imports: Rcpp, RcppArmadillo, purrr, stats, parallel, magrittr
 Suggests: testthat, knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2020-06-10 17:56:39 UTC; darkj
+Packaged: 2020-06-10 19:58:04 UTC; darkj

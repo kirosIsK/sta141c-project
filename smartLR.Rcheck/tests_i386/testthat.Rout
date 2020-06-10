@@ -15,11 +15,3 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> library(testthat)
-> library(smartLR)
-> 
-> test_dir("tests/testthat")
-Error in test_files(paths, reporter = reporter, env = env, stop_on_failure = stop_on_failure,  : 
-  No matching test file in dir
-Calls: test_dir -> test_files
-Execution halted
