@@ -8,40 +8,60 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-# Smart Linear Regression with bootstrap estimation that automatically 
-select Armadillo method or lm.wfit() method based on dimension of the dataset
+# Smart Weighed Linear Regression with bootstrap estimation
+automatically select Armadillo rewritten method or lm.wfit() method based on dimension of the dataset
   
 
 Introduction
 --------
-- Generate BootStrap Estimation is very time consuming in R. 
-  This package intends to the speed up the process with the support of parallel Computation
-    Under most of the time, parallel method should be faster than non parallel.
-    
-  
-  Arguments
-  - formula  formula for the regression
-  - data     dataset for the regression
-  - m        num of data to split to
-  - B        length of Bootstraps for each splited Dataset
-  - parallel True if to use parallel, True by Default
+Generate BootStrap Estimation is very time consuming in R.\
+This package intends to the speed up the process with the support of parallel Computation.\
+Under most of the time, parallel method should be faster than non parallel.\
+<br/> <br/>
   
   
-  A packager user, although, is not enforced to tell whether to use parallel method or not,
-    which is set to default, however, he is encouraged to use Parallel method. Since most 
-    function is utilized by Parallel Computing.
   
-  
-  Moreover, Weighted Linear Regression is rewritten using RcppArmadillo. 
-    Arma method and lm.wfit method will be automatically selected based on dimension of the dataset
-    Generally, given a dataset with dimension M x N,
-    Arma Method (fastLmX/fastLmXPure)
-      - chosen when M < 300 and N < 300
-    lm.wfit Mehod
-      - chosen either M >= 300 and N >= 300
-  
-  
+blblm()
+--------
 
+Arguments     | Desciption                                    | Default Value
+------------- | --------------------------------------------- | ----------------
+formula       | formula for the regression                    | Not Application
+data          | dataset for the regression                    | Not Application
+m             | num of data to split to                       | 10 
+B             | length of Bootstraps for each splited Dataset | 5000
+parallel      | True if to use parallel                       | TRUE
+
+<br/>
+A remark point here is that blblm() gets linear regression estimates via <br/>
+passing matrix and colvec to fastLmXPure() or lm.wfit() which will be faster acutally. \
+<br/> <br/>
+
+A packager user, although, is not enforced to tell whether to use parallel method or not,\
+which is set to default, however, he is encouraged to use Parallel method.\
+Since most function is utilized by Parallel Computing.\
+<br/> <br/>
+
+
+
+smart_lr() And smart_Pure()
+--------
+Moreover, Weighted Linear Regression is rewritten using RcppArmadillo.\
+Generally, given a dataset with dimension M x N,
+
+Arma Method                       | Lm.wfit Method
+--------------------------------- | ------------------------------------
+chosen when M < 300 and N < 300   | chosen either M >= 300 and N >= 300
+
+<br/>
+Arma method (fastLmX/fastLmXPure) and lm.wfit method <br/>
+will be automatically selected based on dimension of the dataset.\
+<br/><br/>
+
+
+
+Experiment
+----------
 Let's Compare the speed with blblm from Package blblm using a large dataset
 ```{r, warning=FALSE, message=FALSE}
 library(kernlab)
@@ -53,8 +73,7 @@ data(spam)
 oj <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
 frm    <- formula(log(Volume) ~ log(Girth))
 
-sprintf("Number of observations: %d", nrow(oj))
-sprintf("Number of variables   : %d", ncol(oj))
+cat(sprintf("Number of observations: %d \nNumber of variables   : %d", nrow(oj), ncol(oj)))
 
 ## It seems that Knit somthing can't detect variables inside my function
 ##  But it doesn't affect the speed of our function
@@ -72,32 +91,33 @@ m=1;  B=1; para = TRUE; CL = "CL"
 
     
 
-# SmartLR -- parallel method
 system.time({
+  # SmartLR -- non parallel method
   smartLR::blblm(type~., data=oj, m=10, B=100, parallel = FALSE)
 })
 
-# SmartLR -- non parallel method
 system.time({
+  # SmartLR -- parallel method
   smartLR::blblm(type~., data=oj, m=10, B=100, parallel = TRUE)
 })
 
-# blblm -- self define method
 system.time({
+  # blblm -- self define method
   blblm::blblm(type~.,   data=oj, m = 10, B = 100)
 })
+
 ```
-As we can see, parallel method is almost 2 times faster than blblm from package blblm
+As we can see, parallel method is almost 2 times faster than blblm from package blblm.\
+<br/>
 
-
-Let's Compare the speed with blblm from Package blblm using a small dataset
- but with a much larger Bootstraps estimations.
+Let's Compare the speed with blblm from Package blblm using a small dataset \
+but with a much larger Bootstraps estimations.
 ```{r}
 library(rbenchmark)
 frm <- formula(log(Volume) ~ log(Girth))
 
-sprintf("Number of observations: %d", nrow(trees))
-sprintf("Number of variables   : %d", ncol(trees))
+cat(sprintf("Number of observations: %d '\n'Number of variables   : %d", nrow(trees), ncol(trees)))
+
 
 ## It seems that Knit somthing can't detect variables inside my function
 ##  But it doesn't affect the speed of our function
@@ -115,12 +135,12 @@ m=1;  B=1; para = TRUE; CL = "CL"
 
 
     
-# SmartLR -- parallel method
+# SmartLR -- non parallel method
 system.time({
   smartLR::blblm(frm, data=trees, m=10, B=5000, parallel = FALSE)
 })
 
-# SmartLR -- non parallel method
+# SmartLR -- parallel method
 system.time({
   smartLR::blblm(frm, data=trees, m=10, B=5000, parallel = TRUE)
 })
@@ -130,20 +150,18 @@ system.time({
   blblm::blblm(frm,   data=trees, m = 10, B = 5000)
 })
 ```
-Actually, parallel method will even have a larger gap with non-parallel method
- when B and m get larger. When B is 100 in the previous example, the strength
- of parallel computating is not that significant because initial resources
- for allocating clusters is not cheap.
+Actually, parallel method will even have a larger gap with non-parallel method when B and m get larger.\
+When B is 100 in the previous example, the strength of parallel computating is not that significant \
+because initial resources for allocating clusters is not cheap.\
+<br/>
 
-
-Let's Compare the speed with rewritten weighted linear regression, fastLmX with
-  lm and fastLm from RCppArmadillo.
+Let's Compare the speed with rewritten weighted linear regression, fastLmX \
+with lm() from r-base and fastLm() from RCppArmadillo.
 ```{r}
 library(rbenchmark)
 library(RcppArmadillo)
 
-sprintf("Number of observations: %d", nrow(trees))
-sprintf("Number of variables   : %d", ncol(trees))
+cat(sprintf("Number of observations: %d \nNumber of variables   : %d", nrow(trees), ncol(trees)))
 y      <- log(trees$Volume)
 X      <- as.matrix(log(trees$Girth))
 weight <- replicate(length(y), 1)
@@ -160,12 +178,12 @@ benchmark(
   lm(frm, data=trees, weights = weight)
 )
 ```
-We can see fastLmXPure and fastLmPure are the fastest two. This is because they are rewritten
-  using Rcpp and Armadillo linear algebra library.
+We can see fastLmXPure and fastLmPure are the fastest two. This is because they are rewritten \
+using Rcpp and Armadillo linear algebra library.\
+<br/>
 
-
-However, when it comes to a larger dataset, lm from r-base will eventually have a faster
-  performance than our fastLm and fastLmX codes.
+However, when it comes to a larger dataset, \
+lm from r-base will eventually have a faster performance than our fastLm and fastLmX codes.
 ```{r}
 library(rsample)
 library(kernlab)
@@ -174,8 +192,7 @@ library(rbenchmark)
 library(RcppArmadillo)
 data(spam)
 
-sprintf("Number of observations: %d", nrow(oj))
-sprintf("Number of variables   : %d", ncol(oj))
+cat(sprintf("Number of observations: %d \nNumber of variables   : %d", nrow(oj), ncol(oj)))
 oj      <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
 y_data  <- spam %>% select(type = if_else(spam$type == "spam",1,0)) %>% unlist() %>% as.numeric()
 x_data  <- spam %>% select(-type) %>% as.matrix()
@@ -198,18 +215,16 @@ system.time({
 })
 ```
 We can see that lm is much faster than fastLmPure, fastLmXPure
-  when it comes to a high dimension dataset.
+  when it comes to a high dimension dataset.\
+<br/>
 
-
-But, don't worry. There is function in our package called 
-  Smart_lr and Smart_Pure that will automatically selected the
-  better method for us.
+But, don't worry. There is function in our package called Smart_lr and Smart_Pure \
+that will automatically selected the better method for us.
 ```{r}
 library(rbenchmark)
 library(RcppArmadillo)
 
-sprintf("Number of observations: %d", nrow(trees))
-sprintf("Number of variables   : %d", ncol(trees))
+cat(sprintf("Number of observations: %d \nNumber of variables   : %d", nrow(trees), ncol(trees)))
 y      <- log(trees$Volume)
 X      <- as.matrix(log(trees$Girth))
 weight <- replicate(length(y), 1)
@@ -242,8 +257,7 @@ library(rbenchmark)
 library(RcppArmadillo)
 data(spam)
 
-sprintf("Number of observations: %d", nrow(oj))
-sprintf("Number of variables   : %d", ncol(oj))
+cat(sprintf("Number of observations: %d \nNumber of variables   : %d", nrow(oj), ncol(oj)))
 oj      <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
 weight  <- replicate(nrow(oj), 1)
 
@@ -258,8 +272,6 @@ system.time({
 system.time({
   smart_lr(type~., data=oj, weight = weight)
 })
-
-
 ```
 
 
