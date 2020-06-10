@@ -5,6 +5,7 @@
 #' @name smartLR
 #' @useDynLib smartLR
 #' @importFrom Rcpp sourceCpp
+#' @importFrom utils capture.output head
 #' @import parallel
 #' @import purrr
 #' @import stats

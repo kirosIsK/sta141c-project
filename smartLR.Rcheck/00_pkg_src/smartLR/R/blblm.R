@@ -33,6 +33,7 @@ blblm <- function(formula, data, m = 10, B = 5000, parallel = TRUE) {
       # use 2 cores in CRAN
       num_of_cores_to_use <- 2L
     }
+
     else {
       ## Generate Cluster
       num_of_cores_to_use <- as.integer(detectCores()/2)

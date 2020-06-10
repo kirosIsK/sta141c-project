@@ -3,12 +3,11 @@ if(!require(tidyverse)) install.packages("tidyverse",repos = "http://cran.us.r-p
 if(!require(parallel)) install.packages("parallel",repos = "http://cran.us.r-project.org")
 if(!require(smartLR)) install.packages("smartLR",repos = "http://cran.us.r-project.org")
 if(!require(rbenchmark)) install.packages("rbenchmark",repos = "http://cran.us.r-project.org")
-if(!require(devtools)) install.packages("devtools",repos = "http://cran.us.r-project.org")
-if(!require(blblm)) devtools::install_github("ucdavis-sta141c-sq-2020/blblm")
 if(!require(rsample)) install.packages("rsample",repos = "http://cran.us.r-project.org")
+if(!require(RcppArmadillo)) install.packages("rsample",repos = "http://cran.us.r-project.org")
+
 
 test_that("Test Case #1", {
-  library(RcppArmadillo)
   x <- c(44.4,45.9,41.9,53.3,44.7,44.1,50.7,45.2,60.1)
   y <- c(2.6,3.1,2.5,5.0,3.6,4.0,5.2,2.8,3.8)
   z <- replicate(length(y), 1)
@@ -18,9 +17,6 @@ test_that("Test Case #1", {
 
 
 test_that("Test Case #2", {
-  library(kernlab)
-  library(tidyverse)
-  library(RcppArmadillo)
   data(spam)
   oj      <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
   y_data  <- spam %>% select(type = if_else(spam$type == "spam",1,0)) %>% unlist() %>% as.numeric()

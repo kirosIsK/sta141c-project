@@ -1,28 +1,19 @@
-* installing *source* package 'smartLR' ...
+* installing *source* package ‘smartLR’ ...
 ** using staged installation
 ** libs
-
-*** arch - i386
-C:/Rtools/mingw_32/bin/g++ -std=gnu++11  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG  -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/Rcpp/include" -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/RcppArmadillo/include"     -fopenmp   -O2 -Wall  -mtune=core2 -c RcppExports.cpp -o RcppExports.o
-C:/Rtools/mingw_32/bin/g++ -std=gnu++11  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG  -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/Rcpp/include" -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/RcppArmadillo/include"     -fopenmp   -O2 -Wall  -mtune=core2 -c fastLmX_impl.cpp -o fastLmX_impl.o
-C:/Rtools/mingw_32/bin/g++ -std=gnu++11 -shared -s -static-libgcc -o smartLR.dll tmp.def RcppExports.o fastLmX_impl.o -fopenmp -LC:/PROGRA~1/R/R-36~1.3/bin/i386 -lRlapack -LC:/PROGRA~1/R/R-36~1.3/bin/i386 -lRblas -lgfortran -lm -lquadmath -LC:/PROGRA~1/R/R-36~1.3/bin/i386 -lR
-installing to C:/Users/darkj/Music/sta141c-project/smartLR.Rcheck/00LOCK-smartLR/00new/smartLR/libs/i386
-
-*** arch - x64
-C:/Rtools/mingw_64/bin/g++ -std=gnu++11  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG  -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/Rcpp/include" -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/RcppArmadillo/include"     -fopenmp   -O2 -Wall  -mtune=core2 -c RcppExports.cpp -o RcppExports.o
-C:/Rtools/mingw_64/bin/g++ -std=gnu++11  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG  -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/Rcpp/include" -I"C:/Users/darkj/OneDrive/Documents/R/win-library/3.6/RcppArmadillo/include"     -fopenmp   -O2 -Wall  -mtune=core2 -c fastLmX_impl.cpp -o fastLmX_impl.o
-C:/Rtools/mingw_64/bin/g++ -std=gnu++11 -shared -s -static-libgcc -o smartLR.dll tmp.def RcppExports.o fastLmX_impl.o -fopenmp -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lRlapack -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lRblas -lgfortran -lm -lquadmath -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lR
-installing to C:/Users/darkj/Music/sta141c-project/smartLR.Rcheck/00LOCK-smartLR/00new/smartLR/libs/x64
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/home/kiroslo/R/x86_64-pc-linux-gnu-library/3.6/Rcpp/include" -I"/home/kiroslo/R/x86_64-pc-linux-gnu-library/3.6/RcppArmadillo/include"  -fopenmp -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-13EaEj/r-base-3.6.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++11 -I"/usr/share/R/include" -DNDEBUG  -I"/home/kiroslo/R/x86_64-pc-linux-gnu-library/3.6/Rcpp/include" -I"/home/kiroslo/R/x86_64-pc-linux-gnu-library/3.6/RcppArmadillo/include"  -fopenmp -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-13EaEj/r-base-3.6.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fastLmX_impl.cpp -o fastLmX_impl.o
+g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o smartLR.so RcppExports.o fastLmX_impl.o -fopenmp -llapack -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+installing to /home/kiroslo/UCDavis/STA141/sta141c-project/smartLR.Rcheck/00LOCK-smartLR/00new/smartLR/libs
 ** R
+** inst
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
 ** building package indices
+** installing vignettes
 ** testing if installed package can be loaded from temporary location
-*** arch - i386
-*** arch - x64
+** checking absolute paths in shared objects and dynamic libraries
 ** testing if installed package can be loaded from final location
-*** arch - i386
-*** arch - x64
 ** testing if installed package keeps a record of temporary installation path
 * DONE (smartLR)

@@ -23,7 +23,11 @@ Imports:
     purrr,
     stats,
     parallel,
-    magrittr
+    magrittr,
+    tidyverse,
+    rbenchmark,
+    kernlab,
+    rsample
 Suggests: 
     testthat,
     knitr,

@@ -1,69 +1,4 @@
----
-title: "smartLR"
-author: "Wing Lo"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{smartLR}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
----
-
-# Smart Weighed Linear Regression with bootstrap estimation
-automatically select Armadillo rewritten method or lm.wfit() method based on dimension of the dataset
-  
-
-Introduction
---------
-Generate BootStrap Estimation is very time consuming in R.\
-This package intends to the speed up the process with the support of parallel Computation.\
-Under most of the time, parallel method should be faster than non parallel.\
-<br/> <br/>
-  
-  
-  
-blblm()
---------
-
-Arguments     | Desciption                                    | Default Value
-------------- | --------------------------------------------- | ----------------
-formula       | formula for the regression                    | Not Application
-data          | dataset for the regression                    | Not Application
-m             | num of data to split to                       | 10 
-B             | length of Bootstraps for each splited Dataset | 5000
-parallel      | True if to use parallel                       | TRUE
-
-<br/>
-A remark point here is that blblm() gets linear regression estimates via <br/>
-passing matrix and colvec to fastLmXPure() or lm.wfit() which will be faster acutally. \
-<br/> <br/>
-
-A packager user, although, is not enforced to tell whether to use parallel method or not,\
-which is set to default, however, he is encouraged to use Parallel method.\
-Since most function is utilized by Parallel Computing.\
-<br/> <br/>
-
-
-
-smart_lr() And smart_Pure()
---------
-Moreover, Weighted Linear Regression is rewritten using RcppArmadillo.\
-Generally, given a dataset with dimension M x N,
-
-Arma Method                       | Lm.wfit Method
---------------------------------- | ------------------------------------
-chosen when M < 300 and N < 300   | chosen either M >= 300 and N >= 300
-
-<br/>
-Arma method (fastLmX/fastLmXPure) and lm.wfit method <br/>
-will be automatically selected based on dimension of the dataset.\
-<br/><br/>
-
-
-
-Experiment
-----------
-
-```{r, echo=FALSE}
+## ---- echo=FALSE--------------------------------------------------------------
 if(!require(kernlab)) install.packages("kernlab",repos = "http://cran.us.r-project.org")
 if(!require(tidyverse)) install.packages("tidyverse",repos = "http://cran.us.r-project.org")
 if(!require(parallel)) install.packages("parallel",repos = "http://cran.us.r-project.org")
@@ -72,10 +7,8 @@ if(!require(rbenchmark)) install.packages("rbenchmark",repos = "http://cran.us.r
 if(!require(devtools)) install.packages("devtools",repos = "http://cran.us.r-project.org")
 if(!require(RcppArmadillo)) install.packages("RcppArmadillo",repos = "http://cran.us.r-project.org")
 if(!require(blblm)) devtools::install_github("ucdavis-sta141c-sq-2020/blblm")
-```
 
-Let's Compare the speed with blblm from Package blblm using a large dataset
-```{r, warning=FALSE, message=FALSE}
+## ---- warning=FALSE, message=FALSE--------------------------------------------
 library(kernlab)
 library(tidyverse)
 library(parallel)
@@ -118,13 +51,8 @@ system.time({
   blblm::blblm(type~.,   data=oj, m = 10, B = 100)
 })
 
-```
-As we can see, parallel method is almost 2 times faster than blblm from package blblm.\
-<br/>
 
-Let's Compare the speed with blblm from Package blblm using a small dataset \
-but with a much larger Bootstraps estimations.
-```{r}
+## -----------------------------------------------------------------------------
 library(rbenchmark)
 frm <- formula(log(Volume) ~ log(Girth))
 
@@ -161,15 +89,8 @@ system.time({
 system.time({
   blblm::blblm(frm,   data=trees, m = 10, B = 5000)
 })
-```
-Actually, parallel method will even have a larger gap with non-parallel method when B and m get larger.\
-When B is 100 in the previous example, the strength of parallel computating is not that significant \
-because initial resources for allocating clusters is not cheap.\
-<br/>
 
-Let's Compare the speed with rewritten weighted linear regression, fastLmX \
-with lm() from r-base and fastLm() from RCppArmadillo.
-```{r}
+## -----------------------------------------------------------------------------
 library(rbenchmark)
 library(RcppArmadillo)
 
@@ -189,14 +110,8 @@ benchmark(
   fastLmXPure(X, y, weight),
   lm(frm, data=trees, weights = weight)
 )
-```
-We can see fastLmXPure and fastLmPure are the fastest two. This is because they are rewritten \
-using Rcpp and Armadillo linear algebra library.\
-<br/>
 
-However, when it comes to a larger dataset, \
-lm from r-base will eventually have a faster performance than our fastLm and fastLmX codes.
-```{r}
+## -----------------------------------------------------------------------------
 library(rsample)
 library(kernlab)
 library(tidyverse)
@@ -225,14 +140,8 @@ system.time({
 system.time({
   lm(type~., data=oj)
 })
-```
-We can see that lm is much faster than fastLmPure, fastLmXPure
-  when it comes to a high dimension dataset.\
-<br/>
 
-But, don't worry. There is function in our package called Smart_lr and Smart_Pure \
-that will automatically selected the better method for us.
-```{r}
+## -----------------------------------------------------------------------------
 library(rbenchmark)
 library(RcppArmadillo)
 
@@ -258,10 +167,8 @@ system.time({
 system.time({
   smart_Pure(X, y, weight)
 })
-```
 
-
-```{r}
+## -----------------------------------------------------------------------------
 library(rsample)
 library(kernlab)
 library(tidyverse)
@@ -284,6 +191,4 @@ system.time({
 system.time({
   smart_lr(type~., data=oj, weight = weight)
 })
-```
-
 
