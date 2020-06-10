@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Wing Lo" />
+
+
+<title>smartLR</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">smartLR</h1>
+<h4 class="author">Wing Lo</h4>
+
+
+
+<div id="smart-weighed-linear-regression-with-bootstrap-estimation" class="section level1">
+<h1>Smart Weighed Linear Regression with bootstrap estimation</h1>
+<p>automatically select Armadillo rewritten method or lm.wfit() method based on dimension of the dataset</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Generate BootStrap Estimation is very time consuming in R.<br />
+This package intends to the speed up the process with the support of parallel Computation.<br />
+Under most of the time, parallel method should be faster than non parallel.<br />
+<br /> <br /></p>
+</div>
+<div id="blblm" class="section level2">
+<h2>blblm()</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Arguments</th>
+<th>Desciption</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>formula</td>
+<td>formula for the regression</td>
+<td>Not Application</td>
+</tr>
+<tr class="even">
+<td>data</td>
+<td>dataset for the regression</td>
+<td>Not Application</td>
+</tr>
+<tr class="odd">
+<td>m</td>
+<td>num of data to split to</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>length of Bootstraps for each splited Dataset</td>
+<td>5000</td>
+</tr>
+<tr class="odd">
+<td>parallel</td>
+<td>True if to use parallel</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<p><br /> A remark point here is that blblm() gets linear regression estimates via <br /> passing matrix and colvec to fastLmXPure() or lm.wfit() which will be faster acutally.<br />
+<br /> <br /></p>
+<p>A packager user, although, is not enforced to tell whether to use parallel method or not,<br />
+which is set to default, however, he is encouraged to use Parallel method.<br />
+Since most function is utilized by Parallel Computing.<br />
+<br /> <br /></p>
+</div>
+<div id="smart_lr-and-smart_pure" class="section level2">
+<h2>smart_lr() And smart_Pure()</h2>
+<p>Moreover, Weighted Linear Regression is rewritten using RcppArmadillo.<br />
+Generally, given a dataset with dimension M x N,</p>
+<table>
+<thead>
+<tr class="header">
+<th>Arma Method</th>
+<th>Lm.wfit Method</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chosen when M &lt; 300 and N &lt; 300</td>
+<td>chosen either M &gt;= 300 and N &gt;= 300</td>
+</tr>
+</tbody>
+</table>
+<p><br /> Arma method (fastLmX/fastLmXPure) and lm.wfit method <br /> will be automatically selected based on dimension of the dataset.<br />
+<br /><br /></p>
+</div>
+<div id="experiment" class="section level2">
+<h2>Experiment</h2>
+<pre><code>## Installing package into &#39;C:/Users/darkj/AppData/Local/Temp/Rtmp8ep0U9/Rinst2c9d05e7f1aab&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## package &#39;kernlab&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\darkj\AppData\Local\Temp\RtmpoXFrDW\downloaded_packages</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/darkj/AppData/Local/Temp/Rtmp8ep0U9/Rinst2c9d05e7f1aab&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## package &#39;tidyverse&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\darkj\AppData\Local\Temp\RtmpoXFrDW\downloaded_packages</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/darkj/AppData/Local/Temp/Rtmp8ep0U9/Rinst2c9d05e7f1aab&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## Warning: package &#39;parallel&#39; is not available (for R version 3.6.3)</code></pre>
+<pre><code>## Warning: package &#39;parallel&#39; is a base package, and should not be updated</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/darkj/AppData/Local/Temp/Rtmp8ep0U9/Rinst2c9d05e7f1aab&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## Warning: package &#39;smartLR&#39; is not available (for R version 3.6.3)</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/darkj/AppData/Local/Temp/Rtmp8ep0U9/Rinst2c9d05e7f1aab&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## package &#39;rbenchmark&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\darkj\AppData\Local\Temp\RtmpoXFrDW\downloaded_packages</code></pre>
+<pre><code>## Skipping install of &#39;blblm&#39; from a github remote, the SHA1 (6a343879) has not changed since last install.
+##   Use `force = TRUE` to force installation</code></pre>
+<p>Let’s Compare the speed with blblm from Package blblm using a large dataset</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(kernlab)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="kw">library</span>(parallel)</a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="kw">library</span>(blblm)</a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="kw">library</span>(smartLR)</a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="kw">data</span>(spam)</a>
+<a class="sourceLine" id="cb13-7" title="7">oj &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">if_else</span>(spam<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;spam&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb13-8" title="8">frm    &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">log</span>(Volume) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(Girth))</a>
+<a class="sourceLine" id="cb13-9" title="9"></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d </span><span class="ch">\n</span><span class="st">Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(oj), <span class="kw">ncol</span>(oj)))</a></code></pre></div>
+<pre><code>## Number of observations: 4601 
+## Number of variables   : 58</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">## It seems that Knit somthing can&#39;t detect variables inside my function</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="co">##  But it doesn&#39;t affect the speed of our function</span></a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="co">## I am able to run it in RMD without knit</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="co">##  Delete tthe below until system.time if you</span></a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="co">##  want to try run it by yourfels in RMD</span></a>
+<a class="sourceLine" id="cb15-7" title="7">m=<span class="dv">1</span>;  B=<span class="dv">1</span>; para =<span class="st"> </span><span class="ot">TRUE</span>; CL =<span class="st"> &quot;CL&quot;</span></a>
+<a class="sourceLine" id="cb15-8" title="8"><span class="co">##</span></a>
+<a class="sourceLine" id="cb15-9" title="9"><span class="co">## ADD UNtil this  </span></a>
+<a class="sourceLine" id="cb15-10" title="10">    </a>
+<a class="sourceLine" id="cb15-11" title="11"><span class="co">## Acutally Knit stops when they are not aware of the variables</span></a>
+<a class="sourceLine" id="cb15-12" title="12"><span class="co">##  Can still execute the function using arguments</span></a>
+<a class="sourceLine" id="cb15-13" title="13"><span class="co">##  that being passed to the function</span></a>
+<a class="sourceLine" id="cb15-14" title="14"></a>
+<a class="sourceLine" id="cb15-15" title="15">    </a>
+<a class="sourceLine" id="cb15-16" title="16"></a>
+<a class="sourceLine" id="cb15-17" title="17"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb15-18" title="18">  <span class="co"># SmartLR -- non parallel method</span></a>
+<a class="sourceLine" id="cb15-19" title="19">  smartLR<span class="op">::</span><span class="kw">blblm</span>(type<span class="op">~</span>., <span class="dt">data=</span>oj, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">B=</span><span class="dv">100</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb15-20" title="20">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    7.02    0.09    7.14</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb17-2" title="2">  <span class="co"># SmartLR -- parallel method</span></a>
+<a class="sourceLine" id="cb17-3" title="3">  smartLR<span class="op">::</span><span class="kw">blblm</span>(type<span class="op">~</span>., <span class="dt">data=</span>oj, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">B=</span><span class="dv">100</span>, <span class="dt">parallel =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb17-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.05    0.13    3.97</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb19-2" title="2">  <span class="co"># blblm -- self define method</span></a>
+<a class="sourceLine" id="cb19-3" title="3">  blblm<span class="op">::</span><span class="kw">blblm</span>(type<span class="op">~</span>.,   <span class="dt">data=</span>oj, <span class="dt">m =</span> <span class="dv">10</span>, <span class="dt">B =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    7.92    0.00    8.02</code></pre>
+<p>As we can see, parallel method is almost 2 times faster than blblm from package blblm.<br />
+<br /></p>
+<p>Let’s Compare the speed with blblm from Package blblm using a small dataset<br />
+but with a much larger Bootstraps estimations.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">library</span>(rbenchmark)</a>
+<a class="sourceLine" id="cb21-2" title="2">frm &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">log</span>(Volume) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(Girth))</a>
+<a class="sourceLine" id="cb21-3" title="3"></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d &#39;</span><span class="ch">\n</span><span class="st">&#39;Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(trees), <span class="kw">ncol</span>(trees)))</a></code></pre></div>
+<pre><code>## Number of observations: 31 &#39;
+## &#39;Number of variables   : 3</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co">## It seems that Knit somthing can&#39;t detect variables inside my function</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="co">##  But it doesn&#39;t affect the speed of our function</span></a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="co">## I am able to run it in RMD without knit</span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="co">##  Delete tthe below until system.time if you</span></a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="co">##  want to try run it by yourfels in RMD</span></a>
+<a class="sourceLine" id="cb23-7" title="7">m=<span class="dv">1</span>;  B=<span class="dv">1</span>; para =<span class="st"> </span><span class="ot">TRUE</span>; CL =<span class="st"> &quot;CL&quot;</span></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="co">##</span></a>
+<a class="sourceLine" id="cb23-9" title="9"><span class="co">## ADD UNtil this  </span></a>
+<a class="sourceLine" id="cb23-10" title="10">    </a>
+<a class="sourceLine" id="cb23-11" title="11"><span class="co">## Acutally Knit stops when they are not aware of the variables</span></a>
+<a class="sourceLine" id="cb23-12" title="12"><span class="co">##  Can still execute the function using arguments</span></a>
+<a class="sourceLine" id="cb23-13" title="13"><span class="co">##  that being passed to the function</span></a>
+<a class="sourceLine" id="cb23-14" title="14"></a>
+<a class="sourceLine" id="cb23-15" title="15">    </a>
+<a class="sourceLine" id="cb23-16" title="16"><span class="co"># SmartLR -- non parallel method</span></a>
+<a class="sourceLine" id="cb23-17" title="17"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb23-18" title="18">  smartLR<span class="op">::</span><span class="kw">blblm</span>(frm, <span class="dt">data=</span>trees, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">B=</span><span class="dv">5000</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb23-19" title="19">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##   36.11    0.00   36.39</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># SmartLR -- parallel method</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb25-3" title="3">  smartLR<span class="op">::</span><span class="kw">blblm</span>(frm, <span class="dt">data=</span>trees, <span class="dt">m=</span><span class="dv">10</span>, <span class="dt">B=</span><span class="dv">5000</span>, <span class="dt">parallel =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb25-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.11    0.01   18.60</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># blblm -- self define method</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb27-3" title="3">  blblm<span class="op">::</span><span class="kw">blblm</span>(frm,   <span class="dt">data=</span>trees, <span class="dt">m =</span> <span class="dv">10</span>, <span class="dt">B =</span> <span class="dv">5000</span>)</a>
+<a class="sourceLine" id="cb27-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##   41.61    0.00   42.09</code></pre>
+<p>Actually, parallel method will even have a larger gap with non-parallel method when B and m get larger.<br />
+When B is 100 in the previous example, the strength of parallel computating is not that significant<br />
+because initial resources for allocating clusters is not cheap.<br />
+<br /></p>
+<p>Let’s Compare the speed with rewritten weighted linear regression, fastLmX<br />
+with lm() from r-base and fastLm() from RCppArmadillo.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">library</span>(rbenchmark)</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">library</span>(RcppArmadillo)</a>
+<a class="sourceLine" id="cb29-3" title="3"></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d </span><span class="ch">\n</span><span class="st">Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(trees), <span class="kw">ncol</span>(trees)))</a></code></pre></div>
+<pre><code>## Number of observations: 31 
+## Number of variables   : 3</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">y      &lt;-<span class="st"> </span><span class="kw">log</span>(trees<span class="op">$</span>Volume)</a>
+<a class="sourceLine" id="cb31-2" title="2">X      &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(trees<span class="op">$</span>Girth))</a>
+<a class="sourceLine" id="cb31-3" title="3">weight &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="kw">length</span>(y), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb31-4" title="4">frm    &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">log</span>(Volume) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(Girth))</a>
+<a class="sourceLine" id="cb31-5" title="5"></a>
+<a class="sourceLine" id="cb31-6" title="6"></a>
+<a class="sourceLine" id="cb31-7" title="7"></a>
+<a class="sourceLine" id="cb31-8" title="8"></a>
+<a class="sourceLine" id="cb31-9" title="9"><span class="kw">benchmark</span>(</a>
+<a class="sourceLine" id="cb31-10" title="10">  <span class="kw">fastLm</span>(frm, <span class="dt">data=</span>trees),</a>
+<a class="sourceLine" id="cb31-11" title="11">  <span class="kw">fastLmPure</span>(X, y),</a>
+<a class="sourceLine" id="cb31-12" title="12">  <span class="kw">fastLmX</span>(frm, <span class="dt">data=</span>trees, weight),</a>
+<a class="sourceLine" id="cb31-13" title="13">  <span class="kw">fastLmXPure</span>(X, y, weight),</a>
+<a class="sourceLine" id="cb31-14" title="14">  <span class="kw">lm</span>(frm, <span class="dt">data=</span>trees, <span class="dt">weights =</span> weight)</a>
+<a class="sourceLine" id="cb31-15" title="15">)</a></code></pre></div>
+<pre><code>##                                      test replications elapsed relative
+## 1               fastLm(frm, data = trees)          100    0.15       NA
+## 2                        fastLmPure(X, y)          100    0.00       NA
+## 3      fastLmX(frm, data = trees, weight)          100    0.08       NA
+## 4               fastLmXPure(X, y, weight)          100    0.00       NA
+## 5 lm(frm, data = trees, weights = weight)          100    0.13       NA
+##   user.self sys.self user.child sys.child
+## 1      0.12        0         NA        NA
+## 2      0.00        0         NA        NA
+## 3      0.08        0         NA        NA
+## 4      0.00        0         NA        NA
+## 5      0.12        0         NA        NA</code></pre>
+<p>We can see fastLmXPure and fastLmPure are the fastest two. This is because they are rewritten<br />
+using Rcpp and Armadillo linear algebra library.<br />
+<br /></p>
+<p>However, when it comes to a larger dataset,<br />
+lm from r-base will eventually have a faster performance than our fastLm and fastLmX codes.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">library</span>(rsample)</a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="kw">library</span>(kernlab)</a>
+<a class="sourceLine" id="cb33-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="kw">library</span>(rbenchmark)</a>
+<a class="sourceLine" id="cb33-5" title="5"><span class="kw">library</span>(RcppArmadillo)</a>
+<a class="sourceLine" id="cb33-6" title="6"><span class="kw">data</span>(spam)</a>
+<a class="sourceLine" id="cb33-7" title="7"></a>
+<a class="sourceLine" id="cb33-8" title="8"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d </span><span class="ch">\n</span><span class="st">Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(oj), <span class="kw">ncol</span>(oj)))</a></code></pre></div>
+<pre><code>## Number of observations: 4601 
+## Number of variables   : 58</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">oj      &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">if_else</span>(spam<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;spam&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb35-2" title="2">y_data  &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">type =</span> <span class="kw">if_else</span>(spam<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;spam&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unlist</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.numeric</span>()</a>
+<a class="sourceLine" id="cb35-3" title="3">x_data  &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>type) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>()</a>
+<a class="sourceLine" id="cb35-4" title="4">Z       &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="kw">length</span>(y_data), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb35-5" title="5"></a>
+<a class="sourceLine" id="cb35-6" title="6"></a>
+<a class="sourceLine" id="cb35-7" title="7"><span class="co">## fast Lm Pure from RcppArmadillo</span></a>
+<a class="sourceLine" id="cb35-8" title="8"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb35-9" title="9">  <span class="kw">fastLmPure</span>(x_data, y_data)</a>
+<a class="sourceLine" id="cb35-10" title="10">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.05    0.00    0.04</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co">## Rewritten weighted linear regression using Armadillo</span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb37-3" title="3">  <span class="kw">fastLmXPure</span>(x_data, y_data, Z)</a>
+<a class="sourceLine" id="cb37-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    1.24    0.10    1.37</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co">## lm() in r-base</span></a>
+<a class="sourceLine" id="cb39-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb39-3" title="3">  <span class="kw">lm</span>(type<span class="op">~</span>., <span class="dt">data=</span>oj)</a>
+<a class="sourceLine" id="cb39-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.03    0.00    0.03</code></pre>
+<p>We can see that lm is much faster than fastLmPure, fastLmXPure when it comes to a high dimension dataset.<br />
+<br /></p>
+<p>But, don’t worry. There is function in our package called Smart_lr and Smart_Pure<br />
+that will automatically selected the better method for us.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">library</span>(rbenchmark)</a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">library</span>(RcppArmadillo)</a>
+<a class="sourceLine" id="cb41-3" title="3"></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d </span><span class="ch">\n</span><span class="st">Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(trees), <span class="kw">ncol</span>(trees)))</a></code></pre></div>
+<pre><code>## Number of observations: 31 
+## Number of variables   : 3</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">y      &lt;-<span class="st"> </span><span class="kw">log</span>(trees<span class="op">$</span>Volume)</a>
+<a class="sourceLine" id="cb43-2" title="2">X      &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">log</span>(trees<span class="op">$</span>Girth))</a>
+<a class="sourceLine" id="cb43-3" title="3">weight &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="kw">length</span>(y), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb43-4" title="4">frm    &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="kw">log</span>(Volume) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(Girth))</a>
+<a class="sourceLine" id="cb43-5" title="5"></a>
+<a class="sourceLine" id="cb43-6" title="6"></a>
+<a class="sourceLine" id="cb43-7" title="7"></a>
+<a class="sourceLine" id="cb43-8" title="8"><span class="co">## fast Lm Pure from RcppArmadillo</span></a>
+<a class="sourceLine" id="cb43-9" title="9"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb43-10" title="10">  <span class="kw">fastLmPure</span>(X, y)</a>
+<a class="sourceLine" id="cb43-11" title="11">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##       0       0       0</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co">## lm() in r-base</span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb45-3" title="3">  <span class="kw">lm</span>(<span class="kw">log</span>(trees<span class="op">$</span>Volume)<span class="op">~</span><span class="kw">log</span>(trees<span class="op">$</span>Girth), <span class="dt">data=</span>trees, <span class="dt">weights =</span> weight)</a>
+<a class="sourceLine" id="cb45-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##       0       0       0</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co">## fastLmX being selected</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb47-3" title="3">  <span class="kw">smart_Pure</span>(X, y, weight)</a>
+<a class="sourceLine" id="cb47-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##       0       0       0</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">library</span>(rsample)</a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">library</span>(kernlab)</a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="kw">library</span>(rbenchmark)</a>
+<a class="sourceLine" id="cb49-5" title="5"><span class="kw">library</span>(RcppArmadillo)</a>
+<a class="sourceLine" id="cb49-6" title="6"><span class="kw">data</span>(spam)</a>
+<a class="sourceLine" id="cb49-7" title="7"></a>
+<a class="sourceLine" id="cb49-8" title="8"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Number of observations: %d </span><span class="ch">\n</span><span class="st">Number of variables   : %d&quot;</span>, <span class="kw">nrow</span>(oj), <span class="kw">ncol</span>(oj)))</a></code></pre></div>
+<pre><code>## Number of observations: 4601 
+## Number of variables   : 58</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">oj      &lt;-<span class="st"> </span>spam <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">if_else</span>(spam<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;spam&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb51-2" title="2">weight  &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="kw">nrow</span>(oj), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb51-3" title="3"></a>
+<a class="sourceLine" id="cb51-4" title="4"></a>
+<a class="sourceLine" id="cb51-5" title="5"></a>
+<a class="sourceLine" id="cb51-6" title="6"><span class="co">## lm</span></a>
+<a class="sourceLine" id="cb51-7" title="7"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb51-8" title="8">  <span class="kw">lm</span>(type<span class="op">~</span>., <span class="dt">data=</span>oj, <span class="dt">weights =</span> weight)</a>
+<a class="sourceLine" id="cb51-9" title="9">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.05    0.00    0.04</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co">## lm.wfit being selected by smart_lr</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="kw">system.time</span>({</a>
+<a class="sourceLine" id="cb53-3" title="3">  <span class="kw">smart_lr</span>(type<span class="op">~</span>., <span class="dt">data=</span>oj, <span class="dt">weight =</span> weight)</a>
+<a class="sourceLine" id="cb53-4" title="4">})</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##    0.05    0.00    0.05</code></pre>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

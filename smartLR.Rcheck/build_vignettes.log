@@ -1,0 +1,415 @@
+--- re-building 'smartLR-Detailed-Description.Rmd' using rmarkdown
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/kernlab_0.9-29.zip'
+Content type 'application/zip' length 2641401 bytes (2.5 MB)
+==================================================
+downloaded 2.5 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/colorspace_1.4-1.zip'
+Content type 'application/zip' length 2550495 bytes (2.4 MB)
+==================================================
+downloaded 2.4 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/sys_3.3.zip'
+Content type 'application/zip' length 59821 bytes (58 KB)
+==================================================
+downloaded 58 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/lattice_0.20-41.zip'
+Content type 'application/zip' length 1174253 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/plyr_1.8.6.zip'
+Content type 'application/zip' length 1313381 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/farver_2.0.3.zip'
+Content type 'application/zip' length 1911963 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/labeling_0.3.zip'
+Content type 'application/zip' length 62937 bytes (61 KB)
+==================================================
+downloaded 61 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/munsell_0.5.0.zip'
+Content type 'application/zip' length 244906 bytes (239 KB)
+==================================================
+downloaded 239 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/RColorBrewer_1.1-2.zip'
+Content type 'application/zip' length 55569 bytes (54 KB)
+==================================================
+downloaded 54 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/viridisLite_0.3.0.zip'
+Content type 'application/zip' length 60728 bytes (59 KB)
+==================================================
+downloaded 59 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/askpass_1.1.zip'
+Content type 'application/zip' length 64695 bytes (63 KB)
+==================================================
+downloaded 63 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/rematch_1.0.1.zip'
+Content type 'application/zip' length 16114 bytes (15 KB)
+==================================================
+downloaded 15 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/generics_0.0.2.zip'
+Content type 'application/zip' length 65708 bytes (64 KB)
+==================================================
+downloaded 64 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/nlme_3.1-148.zip'
+Content type 'application/zip' length 2377279 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/reshape2_1.4.4.zip'
+Content type 'application/zip' length 630909 bytes (616 KB)
+==================================================
+downloaded 616 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/DBI_1.1.0.zip'
+Content type 'application/zip' length 607385 bytes (593 KB)
+==================================================
+downloaded 593 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/lifecycle_0.2.0.zip'
+Content type 'application/zip' length 101610 bytes (99 KB)
+==================================================
+downloaded 99 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/tidyselect_1.1.0.zip'
+Content type 'application/zip' length 203319 bytes (198 KB)
+==================================================
+downloaded 198 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/blob_1.2.1.zip'
+Content type 'application/zip' length 47707 bytes (46 KB)
+==================================================
+downloaded 46 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/vctrs_0.3.1.zip'
+Content type 'application/zip' length 1181613 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/gtable_0.3.0.zip'
+Content type 'application/zip' length 434140 bytes (423 KB)
+==================================================
+downloaded 423 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/isoband_0.2.1.zip'
+Content type 'application/zip' length 3304523 bytes (3.2 MB)
+==================================================
+downloaded 3.2 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/scales_1.1.1.zip'
+Content type 'application/zip' length 561673 bytes (548 KB)
+==================================================
+downloaded 548 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/pkgconfig_2.0.3.zip'
+Content type 'application/zip' length 22278 bytes (21 KB)
+==================================================
+downloaded 21 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/curl_4.3.zip'
+Content type 'application/zip' length 4127857 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/openssl_1.4.1.zip'
+Content type 'application/zip' length 3971374 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/utf8_1.1.4.zip'
+Content type 'application/zip' length 215314 bytes (210 KB)
+==================================================
+downloaded 210 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/clipr_0.7.0.zip'
+Content type 'application/zip' length 52061 bytes (50 KB)
+==================================================
+downloaded 50 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/BH_1.72.0-3.zip'
+Content type 'application/zip' length 18270741 bytes (17.4 MB)
+==================================================
+downloaded 17.4 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/cellranger_1.1.0.zip'
+Content type 'application/zip' length 104749 bytes (102 KB)
+==================================================
+downloaded 102 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/progress_1.2.2.zip'
+Content type 'application/zip' length 85402 bytes (83 KB)
+==================================================
+downloaded 83 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/fs_1.4.1.zip'
+Content type 'application/zip' length 774350 bytes (756 KB)
+==================================================
+downloaded 756 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/whisker_0.4.zip'
+Content type 'application/zip' length 83352 bytes (81 KB)
+==================================================
+downloaded 81 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/selectr_0.4-2.zip'
+Content type 'application/zip' length 494421 bytes (482 KB)
+==================================================
+downloaded 482 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/broom_0.5.6.zip'
+Content type 'application/zip' length 1967923 bytes (1.9 MB)
+==================================================
+downloaded 1.9 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/dbplyr_1.4.4.zip'
+Content type 'application/zip' length 644892 bytes (629 KB)
+==================================================
+downloaded 629 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/dplyr_1.0.0.zip'
+Content type 'application/zip' length 1523116 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/forcats_0.5.0.zip'
+Content type 'application/zip' length 356464 bytes (348 KB)
+==================================================
+downloaded 348 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/ggplot2_3.3.1.zip'
+Content type 'application/zip' length 4023651 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/haven_2.3.1.zip'
+Content type 'application/zip' length 1067318 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/hms_0.5.3.zip'
+Content type 'application/zip' length 109641 bytes (107 KB)
+==================================================
+downloaded 107 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/httr_1.4.1.zip'
+Content type 'application/zip' length 514335 bytes (502 KB)
+==================================================
+downloaded 502 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/modelr_0.1.8.zip'
+Content type 'application/zip' length 202983 bytes (198 KB)
+==================================================
+downloaded 198 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/pillar_1.4.4.zip'
+Content type 'application/zip' length 186149 bytes (181 KB)
+==================================================
+downloaded 181 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/readr_1.3.1.zip'
+Content type 'application/zip' length 1565258 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/readxl_1.3.1.zip'
+Content type 'application/zip' length 1529197 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/reprex_0.3.0.zip'
+Content type 'application/zip' length 430414 bytes (420 KB)
+==================================================
+downloaded 420 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/rvest_0.3.5.zip'
+Content type 'application/zip' length 664570 bytes (648 KB)
+==================================================
+downloaded 648 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/tibble_3.0.1.zip'
+Content type 'application/zip' length 411780 bytes (402 KB)
+==================================================
+downloaded 402 KB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/tidyr_1.1.0.zip'
+Content type 'application/zip' length 1334589 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/xml2_1.3.2.zip'
+Content type 'application/zip' length 3178176 bytes (3.0 MB)
+==================================================
+downloaded 3.0 MB
+
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/tidyverse_1.3.0.zip'
+Content type 'application/zip' length 440142 bytes (429 KB)
+==================================================
+downloaded 429 KB
+
+trying URL 'http://cran.us.r-project.org/src/contrib/lubridate_1.7.9.tar.gz'
+Content type 'application/x-gzip' length 467131 bytes (456 KB)
+==================================================
+downloaded 456 KB
+
+* installing *source* package 'lubridate' ...
+** package 'lubridate' successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+
+*** arch - i386
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_fixed.cc -o cctz/src/time_zone_fixed.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_if.cc -o cctz/src/time_zone_if.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_impl.cc -o cctz/src/time_zone_impl.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_info.cc -o cctz/src/time_zone_info.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_libc.cc -o cctz/src/time_zone_libc.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_lookup.cc -o cctz/src/time_zone_lookup.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_posix.cc -o cctz/src/time_zone_posix.o
+C:/Rtools/mingw_32/bin/ar rcs libcctz.a ./cctz/src/time_zone_fixed.o ./cctz/src/time_zone_if.o ./cctz/src/time_zone_impl.o ./cctz/src/time_zone_info.o ./cctz/src/time_zone_libc.o ./cctz/src/time_zone_lookup.o ./cctz/src/time_zone_posix.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c RcppExports.cpp -o RcppExports.o
+C:/Rtools/mingw_32/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c update.cpp -o update.o
+C:/Rtools/mingw_32/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O3 -Wall  -std=gnu99 -mtune=core2 -c utils.c -o utils.o
+C:/Rtools/mingw_32/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O3 -Wall  -std=gnu99 -mtune=core2 -c datetime.c -o datetime.o
+C:/Rtools/mingw_32/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O3 -Wall  -std=gnu99 -mtune=core2 -c period.c -o period.o
+C:/Rtools/mingw_32/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O3 -Wall  -std=gnu99 -mtune=core2 -c tparse.c -o tparse.o
+C:/Rtools/mingw_32/bin/g++ -shared -s -static-libgcc -o lubridate.dll tmp.def RcppExports.o update.o utils.o datetime.o period.o tparse.o -L. -lcctz -LC:/PROGRA~1/R/R-36~1.3/bin/i386 -lR
+installing to C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/00LOCK-lubridate/00new/lubridate/libs/i386
+
+*** arch - x64
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_fixed.cc -o cctz/src/time_zone_fixed.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_if.cc -o cctz/src/time_zone_if.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_impl.cc -o cctz/src/time_zone_impl.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_info.cc -o cctz/src/time_zone_info.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_libc.cc -o cctz/src/time_zone_libc.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_lookup.cc -o cctz/src/time_zone_lookup.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c cctz/src/time_zone_posix.cc -o cctz/src/time_zone_posix.o
+C:/Rtools/mingw_64/bin/ar rcs libcctz.a ./cctz/src/time_zone_fixed.o ./cctz/src/time_zone_if.o ./cctz/src/time_zone_impl.o ./cctz/src/time_zone_info.o ./cctz/src/time_zone_libc.o ./cctz/src/time_zone_lookup.o ./cctz/src/time_zone_posix.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c RcppExports.cpp -o RcppExports.o
+C:/Rtools/mingw_64/bin/g++  -std=gnu++11 -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -mtune=core2 -c update.cpp -o update.o
+C:/Rtools/mingw_64/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -std=gnu99 -mtune=core2 -c utils.c -o utils.o
+C:/Rtools/mingw_64/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -std=gnu99 -mtune=core2 -c datetime.c -o datetime.o
+C:/Rtools/mingw_64/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -std=gnu99 -mtune=core2 -c period.c -o period.o
+C:/Rtools/mingw_64/bin/gcc  -I"C:/PROGRA~1/R/R-36~1.3/include" -DNDEBUG -I. -I./cctz/include/ -I./cctz/src/ -I"C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/Rcpp/include"        -O2 -Wall  -std=gnu99 -mtune=core2 -c tparse.c -o tparse.o
+C:/Rtools/mingw_64/bin/g++ -shared -s -static-libgcc -o lubridate.dll tmp.def RcppExports.o update.o utils.o datetime.o period.o tparse.o -L. -lcctz -LC:/PROGRA~1/R/R-36~1.3/bin/x64 -lR
+installing to C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/RLIBS_234a43194742/00LOCK-lubridate/00new/lubridate/libs/x64
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'lubridate'
+    finding HTML links ... done
+    DateCoercion                            html  
+    DateTimeUpdate                          html  
+    Deprecated                              html  
+    Duration-class                          html  
+    Interval-class                          html  
+    Period-class                            html  
+    Timespan-class                          html  
+    am                                      html  
+    as.duration                             html  
+    as.interval                             html  
+    as.period                               html  
+    as_date                                 html  
+    cyclic_encoding                         html  
+    date                                    html  
+    date_decimal                            html  
+    date_utils                              html  
+    day                                     html  
+    days_in_month                           html  
+    decimal_date                            html  
+    dst                                     html  
+    duration                                html  
+    fit_to_timeline                         html  
+    force_tz                                html  
+    format_ISO8601                          html  
+    format_ISO8601_precision_check          html  
+    guess_formats                           html  
+    hidden_aliases                          html  
+    hms                                     html  
+    hour                                    html  
+    interval                                html  
+    is.difftime                             html  
+    is.instant                              html  
+    is.timespan                             html  
+    lakers                                  html  
+    leap_year                               html  
+    local_time                              html  
+    lubridate-package                       html  
+    make_datetime                           html  
+Rd warning: C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/working_dir/RtmpGIOSer/R.INSTALL1317c2a0a30e9/lubridate/man/make_datetime.Rd:37: file link 'ISOdate' in package 'base' does not exist and so has been treated as a topic
+    make_difftime                           html  
+    minute                                  html  
+    month                                   html  
+    mplus                                   html  
+    now                                     html  
+    origin                                  html  
+    parse_date_time                         html  
+Rd warning: C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/working_dir/RtmpGIOSer/R.INSTALL1317c2a0a30e9/lubridate/man/parse_date_time.Rd:59: file link 'as.POSIXct' in package 'base' does not exist and so has been treated as a topic
+    period                                  html  
+    period_to_seconds                       html  
+    posix_utils                             html  
+    pretty_dates                            html  
+    quarter                                 html  
+    reclass_date                            html  
+    reclass_timespan                        html  
+    reexports                               html  
+Rd warning: C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/working_dir/RtmpGIOSer/R.INSTALL1317c2a0a30e9/lubridate/man/reexports.Rd:16: file link 'intersect' in package 'generics' does not exist and so has been treated as a topic
+Rd warning: C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/working_dir/RtmpGIOSer/R.INSTALL1317c2a0a30e9/lubridate/man/reexports.Rd:16: file link 'setdiff' in package 'generics' does not exist and so has been treated as a topic
+Rd warning: C:/Users/darkj/AppData/Local/Temp/Rtmpy2KdcR/working_dir/RtmpGIOSer/R.INSTALL1317c2a0a30e9/lubridate/man/reexports.Rd:16: file link 'union' in package 'generics' does not exist and so has been treated as a topic
+    rollback                                html  
+    round_date                              html  
+    second                                  html  
+    stamp                                   html  
+    time_length                             html  
+    timespan                                html  
+    tz                                      html  
+    week                                    html  
+    with_tz                                 html  
+    within-interval                         html  
+    year                                    html  
+    ymd                                     html  
+    ymd_hms                                 html  
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+*** arch - x64
+** testing if installed package can be loaded from final location
+*** arch - i386
+*** arch - x64
+** testing if installed package keeps a record of temporary installation path
+* DONE (lubridate)
+
+The downloaded source packages are in
+	'C:\Users\darkj\AppData\Local\Temp\Rtmpy2KdcR\working_dir\RtmpKeBO5S\downloaded_packages'
+trying URL 'http://cran.us.r-project.org/bin/windows/contrib/3.6/rbenchmark_1.0.0.zip'
+Content type 'application/zip' length 22328 bytes (21 KB)
+==================================================
+downloaded 21 KB
+
+Quitting from lines 67-73 (smartLR-Detailed-Description.Rmd) 
+Error: processing vignette 'smartLR-Detailed-Description.Rmd' failed with diagnostics:
+there is no package called 'devtools'
+--- failed re-building 'smartLR-Detailed-Description.Rmd'
+
+SUMMARY: processing the following file failed:
+  'smartLR-Detailed-Description.Rmd'
+
+Error: Vignette re-building failed.
+Execution halted

@@ -1,0 +1,13 @@
+smartLR-package	smartLR
+blbcoef	blbcoef
+blblm	blblm
+blbsigma	blbsigma
+fastLmXPure	fastLmXPure
+fastLmX_impl	fastLmX_impl
+lm_each_boot	lm_each_boot
+lm_each_subsample	lm_each_subsample
+smartLR	smartLR
+smart_lm1	smart_lm1
+smart_lr	smart_lr
+smart_Pure	smart_Pure
+split_data	split_data

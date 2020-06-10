@@ -1,0 +1,27 @@
+blbcoef                 get coefficients from fit
+blblm                   estimate the regression with Little Bag of
+                        Bootstraps It is strongly encouraged to use
+                        parallel when m and B is large
+blbsigma                compute sigma from fit
+fastLmXPure             Directly call fastLmX without doing Data
+                        Maniplication
+fastLmX_impl            estimate the regression estimates based on
+                        given the number of repetitions
+lm_each_boot            compute the regression estimates for a blb
+                        dataset
+lm_each_subsample       compute the estimates
+smartLR                 SmartLR : Fast Computational weighted Linear
+                        Regression
+smart_Pure              smart Pure method of Linear Regression that
+                        automatically select Armadillo method or
+                        lm.wfit method based on dimension of the
+                        dataset
+smart_lm1               estimate the regression estimates based on
+                        given the number of repetitions Automatically
+                        select Arma or lm.wfit based on the dimension
+                        of the dataset
+smart_lr                smart Linear Regression that automatically
+                        select Armadillo method or lm method based on
+                        dimension of the dataset
+split_data              split data into m parts of approximated equal
+                        sizes

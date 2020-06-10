@@ -27,6 +27,7 @@ Rcpp::List fastLmX_impl(const arma::mat& X, const arma::colvec& Y, const arma::c
 
 
   return Rcpp::List::create(Rcpp::Named("coefficients") = coef,
+                            Rcpp::Named("rank")         = coef.n_rows,
                             Rcpp::Named("stderr")       = std_err,
                             Rcpp::Named("df.residual")  = n - k);
 }
