@@ -1,0 +1,155 @@
+---
+title: "Untitled"
+author: "Wing Lo"
+date: "6/8/2020"
+output: html_document
+---
+
+```{r}
+library(rsample)
+library(kernlab)
+library(tidyverse)
+library(rbenchmark)
+library(fastWLR)
+library(RcppArmadillo)
+data(spam)
+set.seed(141)
+nspam <- 1813
+nham <- 2788
+test <- c(sample(1:nspam, floor(nspam * 0.1)), sample(nspam + 1:nham, floor(nham * 0.1)))
+spam_train <- spam[-test, ]
+spam_test <- spam[test, ]
+y=ifelse(spam_train$type == "spam", 1, 0)
+x_data <- spam_train %>% select(-type) %>% as.matrix()
+
+oj <- spam %>% select(-type) %>% as.matrix()
+oj2 <- spam %>% mutate(type = if_else(spam$type == "Spam",1,0))
+```
+
+```{r}
+library(rsample)
+library(kernlab)
+library(tidyverse)
+library(rbenchmark)
+library(fastWLR)
+library(RcppArmadillo)
+data(spam)
+bench::mark(
+  fastWLR::blblm(type~., data=oj2, m=5, B=100, parallel = TRUE),
+  fastWLR::blblm(type~., data=oj2, m=5, B=100, parallel = FALSE),
+  blblm::blblm(type~., data=oj2, m=5, B=100),
+  check = FALSE
+)
+```
+
+```{r}
+system.time({
+  fastWLR::blblm(type~., data=oj, m=5, B=100, parallel = TRUE)
+})
+
+system.time({
+  fastWLR::blblm(type~., data=oj2, m=5, B=100, parallel = FALSE)
+})
+
+system.time({
+  blblm::blblm(type~., data=oj2, m=5, B=100)
+})
+```
+
+
+```{r}
+
+y <- log(trees$Volume)
+X <- cbind(1, log(trees$Girth))
+weight <- replicate(length(y), 1)
+frm <- formula(log(Volume) ~ log(Girth))
+
+benchmark(
+  fastLm(frm, data=trees),
+  fastLmPure(as.matrix(log(trees$Girth)), log(trees$Volume)),
+  fastLmX(frm, data=trees, weight),
+  fastLmXPure(as.matrix(log(trees$Girth)), log(trees$Volume), weight),
+  lm(frm, data=trees, weights = weight)
+)
+```
+```{r}
+oj      <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
+y_data  <- spam %>% select(type = if_else(spam$type == "spam",1,0)) %>% unlist() %>% as.numeric
+x_data  <- spam %>% select(-type) %>% as.matrix() %>% as.matrix()
+Z       <- replicate(length(y_data), 1)
+
+benchmark(
+  fastLm(type~., data=oj),
+  fastLmXPure(x_data, y_data, Z),
+  lm(type~., data=oj)
+)
+```
+
+
+```{r}
+library(rsample)
+library(kernlab)
+library(tidyverse)
+library(rbenchmark)
+library(RcppArmadillo)
+data(spam)
+oj      <- spam %>% mutate(type = if_else(spam$type == "spam",1,0))
+y_data  <- spam %>% select(type = if_else(spam$type == "spam",1,0)) %>% unlist() %>% as.numeric()
+x_data  <- spam %>% select(-type) %>% as.matrix()
+Z       <- replicate(length(y_data), 1)
+system.time({
+  fastLm(type~., data=oj)
+})
+
+system.time({
+  fastLmXPure(x_data, y_data, Z)
+})
+
+system.time({
+  lm(type~., data=oj)
+})
+```
+
+
+```{r}
+frm <- formula(log(Volume) ~ log(Girth))
+benchmark(
+  fastWLR::blblm(frm, data=trees, m = 10, B = 5000,parallel = TRUE),
+  fastWLR::blblm(frm, data=trees, m = 10, B = 5000,parallel = FALSE),
+  blblm::blblm(frm, data=trees, m = 10, B = 5000)
+)
+```
+
+
+```{r}
+system.time({
+  fastWLR::blblm(frm, data=trees, m = 10, B = 5000,parallel = TRUE)
+})
+
+system.time({
+  fastWLR::blblm(frm, data=trees, m = 10, B = 5000,parallel = FALSE)
+})
+
+system.time({
+  blblm::blblm(frm, data=trees, m = 10, B = 5000)
+})
+```
+
+
+```{r}
+Rprof()
+fastWLR::blblm(type~., data=oj2, m=5, B=100, parallel = TRUE)
+Rprof(NULL)
+result <- summaryRprof()
+result$by.total
+```
+
+
+```{r}
+Rprof()
+blblm::blblm(type~., data=oj2, m=5, B=100)
+Rprof(NULL)
+result <- summaryRprof()
+result$by.total
+```
+

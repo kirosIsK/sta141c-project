@@ -1,0 +1,22 @@
+Package: smartLR
+Type: Package
+Title: Smart Computational Linear Regression
+Version: 0.1.0
+Author: Wing Lo
+Maintainer: Wing Lo <wclo@ucdavis.edu>
+Description: Smart Computational Linear Regression.
+    Automatically select Armadillo Linear algebra method or
+    R base lm method based on the dimension of data.
+    Also support estimation of bootstrap with the 
+    support of parallel computing.
+SystemRequirements: GNU make
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
+LinkingTo: Rcpp, RcppArmadillo
+Imports: Rcpp, RcppArmadillo, purrr, stats, parallel, magrittr
+Suggests: testthat, knitr, rmarkdown
+VignetteBuilder: knitr
+NeedsCompilation: yes
+Packaged: 2020-06-09 22:56:39 UTC; darkj
